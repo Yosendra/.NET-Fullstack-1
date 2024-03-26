@@ -1,0 +1,56 @@
+﻿@model IEnumerable<GigHub.Models.Gig>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <div class="row">
+        <ul class="gigs">
+            @foreach (var gig in Model)
+            {
+                <li>
+                    <div class="date">
+                        <div class="month">@gig.DateTime.ToString("MMM")</div>
+                        <div class="day">@gig.DateTime.ToString("d ")</div>
+                    </div>
+                    <div class="details">
+                        <span class="artist">@gig.Artist.Name</span>
+                        <span class="genre">@gig.Genre.Name</span>
+                        <button data-gig-id="@gig.Id" class="btn btn-light float-end js-toggle-attendance">Going ?</button>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</main>
+
+@section scripts
+{
+    @*
+        This script will be rendered after JQuery and Bootstrap javascript is loaded
+        Look at the _Layout.cshtml
+    *@
+    <script>
+        // This handle the ready event of JQuery's document object
+        $(document).ready(function () {
+            // Subscribe to the click event of our button
+            $(".js-toggle-attendance").click(function (e) {
+                // optimazation to prevent jQuery query e.target more than one time
+                // we put it in a variable button, so we can reuse it
+                let button = $(e.target);
+                let gigId = button.data("gig-id");
+
+                // $.post() return a promise
+                $.post("/api/attendances", gigId)
+                .done(function () {
+                    button.removeClass("btn-light")
+                        .addClass("btn-info")
+                        .text("Going");
+                })
+                .fail(function () {
+                    alert("Something failed!")
+                })
+            });
+        });
+    </script>
+}
