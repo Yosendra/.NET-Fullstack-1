@@ -10,7 +10,7 @@ using System.Web.Routing;
  * Implement following artist feature
  * Check everything under "following artist feature" comment in the file mentioned below
  * 
- * After modify "Following.cs" and "ApplicationUser.cs"
+ * After modify "Following.cs", "ApplicationUser.cs", "ApplicationDbContext.cs"
  *  Add-Migration AddFollowing
  *  Update-Database
  *  
@@ -24,6 +24,7 @@ using System.Web.Routing;
  * Look at:
  * • Following.cs
  * • ApplicationUser.cs
+ * • ApplicationDbContext.cs
  * • 202403260912153_AddFollowing.cs
  * • FollowingsController.cs -> Follow()
  * • HomeController.cs -> Index.cshtml
