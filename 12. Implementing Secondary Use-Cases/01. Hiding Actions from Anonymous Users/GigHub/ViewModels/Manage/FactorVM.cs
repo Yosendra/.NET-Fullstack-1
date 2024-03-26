@@ -1,4 +1,4 @@
-﻿namespace GigHub.ViewModels
+﻿namespace GigHub.ViewModels.Manage
 {
     public class FactorVM
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GigHub.ViewModels
+namespace GigHub.ViewModels.Manage
 {
     public class ChangePasswordVM
     {

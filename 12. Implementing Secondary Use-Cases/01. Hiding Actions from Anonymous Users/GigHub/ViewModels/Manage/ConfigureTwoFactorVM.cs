@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GigHub.ViewModels
+namespace GigHub.ViewModels.Manage
 {
     public class ConfigureTwoFactorVM
     {
